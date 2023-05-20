@@ -25,3 +25,24 @@
     - Since queries are identified by a key react query can manage your requests so that if you load a page and several components on that page request the same data, react query can send the query only once and if another component requests the data while that originla query is going out, then react query can de-duplicate the requests
 - Retry on error
 - Callback
+
+### Getting started
+- Create query client
+    - Client that manages queries and cache
+- Apply QueryProvider
+    - Provides cache and client config to children
+    - Tales query client as the value
+- UseQuery hook
+    - Hook that queries data from server
+
+### isFetching vs isLoading
+- isFetching: the async query faction hasn't resolved yet
+- isLoading: the async query function hasn't resolved yet and the data is not in the cache yet
+
+### React Query Devtools
+- Shows queries (by key)
+    - Status of queries
+    - Last updated timestamp
+- Data explorer
+- Query explorer
+- https://react-query.tanstack.com/devtools
