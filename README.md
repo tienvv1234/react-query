@@ -66,3 +66,24 @@ Data refetch only triggers for stale data
         - how long it's been since the last active useQuery
     - After the cache expires, the data os garbage collected
 - Cache is backup data to display while fetching
+
+### Why don't comments refresh?
+- Every query uses the same key (comments)
+- Data for queries with known keys only refetched upon trigger
+- Example triggers: window refocus, component remount, running refetch function in useQuery automated refetch, query invalidation after a mutation
+
+# Solution
+Option: remove programmiatically for every new title post
+    - It's not a good solution because it's not scalable
+    - Its not easy
+    - It's not really what we want
+No reason to remove data from the cache
+    - We are not even performing the same query!
+Query includes post ID
+    - Cache on a per-query basis
+    - don't share cache for any "comments" query regardless of post id
+What re really want: label the query for each post separately
+Pass array for the query key, not just a string
+Treat the query key as a dependency array
+    - When key changes, create a new query
+Query function values should be part of the key
