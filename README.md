@@ -72,7 +72,7 @@ Data refetch only triggers for stale data
 - Data for queries with known keys only refetched upon trigger
 - Example triggers: window refocus, component remount, running refetch function in useQuery automated refetch, query invalidation after a mutation
 
-# Solution
+### Solution
 Option: remove programmiatically for every new title post
     - It's not a good solution because it's not scalable
     - Its not easy
@@ -87,3 +87,10 @@ Pass array for the query key, not just a string
 Treat the query key as a dependency array
     - When key changes, create a new query
 Query function values should be part of the key
+
+### pagination
+- Track current page in component state (currentPage)
+- Use query keys that include the page number ['posts', currentPage]
+- User clicks "next page" or "previous page" button
+    - Update currentPage in component state
+    - React Query will automatically refetch data for the new page
