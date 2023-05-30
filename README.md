@@ -46,3 +46,23 @@
 - Data explorer
 - Query explorer
 - https://react-query.tanstack.com/devtools
+
+### stale time vs cache time
+why does it matter if the data is stale
+
+Data refetch only triggers for stale data
+    - For example, component remount, window refocus
+    - StaleTime translates to max age
+    - how to tolarate data potentially being out of date(we can set staleTime to 10 second to always refetch data)
+    - So if anything happened that would ordinarily cause a refetch, but the data is not stale(fresh), then react query will not refetch the data, it will only be launched if the data is stale
+
+- staleTime: how long to consider data fresh
+- staleTIme is for re-fetching
+- cacheTime is for garbage collection
+
+- cache is for data that might be re used later
+    - query goes into 'cold storage' if there's no active useQuery
+    - cache data expires after cacheTime (default 5 minutes)
+        - how long it's been since the last active useQuery
+    - After the cache expires, the data os garbage collected
+- Cache is backup data to display while fetching
