@@ -100,3 +100,16 @@ Query function values should be part of the key
 - isLoading: no cached data, plus inFetching
 
 anything isLoading is true, isFetching is also true
+### Mutations
+- Mutation: making a network call that changes data on the server
+    - jsonplaceholder doesn't actually change data
+    - go through the mechanics of making the change
+- Day spa app will demonstrate showing  changes to user:
+    - Optimistic updates
+    - Update react query cache wotj data returned from the server
+    - Trigger re-fetch of relevant data(invalidation)
+- Similar to useQuery, but:
+    - Returns mutation function
+    - doesn't need query key
+    - isLoading but no isFetching
+    - By default, no retries (configurable)
