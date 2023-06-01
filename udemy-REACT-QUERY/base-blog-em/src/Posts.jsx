@@ -15,14 +15,19 @@ export function Posts() {
   const [selectedPost, setSelectedPost] = useState(null);
 
   // replace with useQuery
-  const {data, isLoading, isError, error} = useQuery(["posts", currentPage],
+  const {data, isLoading, isError, error, isFetching} = useQuery(["posts", currentPage],
   () => fetchPosts(currentPage), {
     staleTime: 1000 * 2, // set to 2 seconds (default is 1 second) fresh 2 seconds => stale
   });
   console.log(data, isLoading, isError, error);
-  if (isLoading) { 
+  if (isFetching) {
+    // this isFetching will display loading spinner regardless of whether data is cached or not
     return <div>Loading...</div>;
   }
+  // if (isLoading) {
+  //   // if there was nothing in the cache, we were getting the date from server
+  //   return <div>Loading...</div>;
+  // }
   if (isError) {
     return <div>{error.message}</div>;
   }

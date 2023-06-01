@@ -94,3 +94,9 @@ Query function values should be part of the key
 - User clicks "next page" or "previous page" button
     - Update currentPage in component state
     - React Query will automatically refetch data for the new page
+
+### isFetching vs isLoading
+- isFetching: the async query function hasn't resolved yet
+- isLoading: no cached data, plus inFetching
+
+anything isLoading is true, isFetching is also true
